@@ -1,0 +1,16 @@
+body {
+  background: linear-gradient(180deg, rgba(36, 62, 39, 1) 15%, rgba(17, 20, 15, 1) 79%) no-repeat;
+  background-attachment: fixed;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  &:hover {
+    color: #e2d094;
+  }
+  &.active {
+    color: #f5c524;
+    text-decoration: overline;
+  }
+}
