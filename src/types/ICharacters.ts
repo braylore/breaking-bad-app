@@ -8,4 +8,5 @@ export interface ICharacters {
   appearance: number[];
   nickname: string;
   portrayed: string;
+  better_call_saul_appearance: string[];
 }
