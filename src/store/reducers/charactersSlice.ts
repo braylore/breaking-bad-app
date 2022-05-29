@@ -1,24 +1,16 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import axios from 'axios';
-import { BASE_URL_BBAPI } from '../../constants/urls';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ICharacters } from '../../types/ICharacters';
-
-export const fetchAllCharacters = createAsyncThunk('characters/fetchAll', async (_, thunkAPI) => {
-  try {
-    const response = await axios.get<ICharacters[]>(`${BASE_URL_BBAPI}/characters`);
-    return response.data;
-  } catch (e) {
-    return thunkAPI.rejectWithValue('An error occurred while loading characters');
-  }
-});
+import { fetchCharacters, fetchCharacterByName } from '../actions/actions';
 
 interface ICharactersState {
+  character: ICharacters[];
   characters: ICharacters[];
   isLoading: boolean;
   error: string;
 }
 
 const initialState: ICharactersState = {
+  character: [],
   characters: [],
   isLoading: false,
   error: ''
@@ -29,14 +21,27 @@ export const charactersSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [fetchAllCharacters.fulfilled.type]: (state, action: PayloadAction<ICharacters[]>) => {
+    [fetchCharacters.fulfilled.type]: (state, action: PayloadAction<ICharacters[]>) => {
       state.isLoading = false;
       state.characters = action.payload;
     },
-    [fetchAllCharacters.pending.type]: (state) => {
+    [fetchCharacters.pending.type]: (state) => {
       state.isLoading = true;
+      state.error = '';
     },
-    [fetchAllCharacters.rejected.type]: (state, action: PayloadAction<string>) => {
+    [fetchCharacters.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    [fetchCharacterByName.fulfilled.type]: (state, action: PayloadAction<ICharacters[]>) => {
+      state.isLoading = false;
+      state.character = action.payload;
+    },
+    [fetchCharacterByName.pending.type]: (state) => {
+      state.isLoading = true;
+      state.error = '';
+    },
+    [fetchCharacterByName.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = action.payload;
     }

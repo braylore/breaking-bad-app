@@ -1,16 +1,6 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IPosters, IPosterParams } from '../../types/IPosters';
-import { BASE_URL_IMDB, SERIES_ID_IMDB, API_KEY } from '../../constants/urls';
-
-export const fetchPosters = createAsyncThunk('posters/fetchAll', async (_, thunkAPI) => {
-  try {
-    const response = await axios.get<IPosters>(`${BASE_URL_IMDB}Posters/${API_KEY}/${SERIES_ID_IMDB}`);
-    return response.data;
-  } catch (e) {
-    return thunkAPI.rejectWithValue('An error occurred while loading posters');
-  }
-});
+import { fetchPosters } from '../actions/actions';
 
 interface IPostersState {
   posters: IPosterParams[];

@@ -1,8 +1,12 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import postersReducer from './reducers/postersSlice';
+import charactersReducer from './reducers/charactersSlice';
+import quoteReducer from './reducers/quoteSlice';
 
 const rootReducer = combineReducers({
-  postersReducer
+  postersReducer,
+  charactersReducer,
+  quoteReducer
 });
 
 export const store = configureStore({
