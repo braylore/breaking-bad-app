@@ -3,6 +3,7 @@ import AboutPage from '../../pages/AboutPage/AboutPage';
 import CharactersPage from '../../pages/CharactersPage/CharactersPage';
 import EpisodesPage from '../../pages/EpisodesPage/EpisodesPage';
 import GalleryPage from '../../pages/GalleryPage/GalleryPage';
+import SingleCharacterPage from '../../pages/SingleCharacterPage/SingleCharacterPage';
 import Layout from '../Layout/Layout';
 
 const App = () => {
@@ -19,6 +20,10 @@ const App = () => {
         <Route
           path="Characters"
           element={<CharactersPage />}
+        />
+        <Route
+          path="Characters/:name"
+          element={<SingleCharacterPage />}
         />
         <Route
           path="Episodes"
