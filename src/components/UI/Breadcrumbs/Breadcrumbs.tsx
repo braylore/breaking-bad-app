@@ -31,7 +31,7 @@ const CustomBreadcrumbs = () => {
   ];
 
   return (
-    <Stack spacing={4}>
+    <Stack>
       <Breadcrumbs>{breadcrumbs}</Breadcrumbs>
     </Stack>
   );
