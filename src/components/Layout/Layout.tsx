@@ -6,7 +6,11 @@ const Layout = () => {
   return (
     <>
       <Header />
-      <Container>
+      <Container
+        sx={{
+          mb: '25px'
+        }}
+      >
         <Outlet />
       </Container>
     </>
