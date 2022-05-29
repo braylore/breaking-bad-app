@@ -1,7 +1,7 @@
 import { Fade, Grid } from '@mui/material';
 import { useEffect, useState, useRef } from 'react';
 import { TransitionGroup } from 'react-transition-group';
-import { fetchPosters } from '../../store/reducers/postersSlice';
+import { fetchPosters } from '../../store/actions/actions';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import ImgWrapper from '../../components/ImgWrapper/ImgWrapper';
 import { getSlicedPosters } from '../../utils/getSlicedPosters';
@@ -9,7 +9,7 @@ import { IPosterParams, IPosters } from '../../types/IPosters';
 import { useDidMountEffect } from '../../hooks/useDidMountEffect';
 import { useObserver } from '../../hooks/useObserver';
 import Loader from '../../components/UI/Loader/Loader';
-import styles from './galleryPage.module.scss';
+import mainStyles from '../../styles/main.module.scss';
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -44,7 +44,7 @@ const App = () => {
     <>
       {isLoading ? <Loader /> : null}
       {error ? (
-        <h2 className={styles.errorMessage}>An error occurred while loading the gallery. Please try again later.</h2>
+        <h2 className={mainStyles.msg}>An error occurred while loading the gallery. Please try again later.</h2>
       ) : null}
       <Grid
         sx={{
@@ -80,7 +80,7 @@ const App = () => {
         </TransitionGroup>
       </Grid>
       <div
-        className={styles.wrapper}
+        className={mainStyles.wrapper}
         ref={divRef}
       ></div>
     </>
