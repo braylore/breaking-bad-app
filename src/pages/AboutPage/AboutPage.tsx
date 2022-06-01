@@ -14,7 +14,7 @@ const AboutPage = () => {
           mt: '30px'
         }}
       >
-        This portal is dedicated to one of the greatest television series of all time
+        This portal is dedicated to one of the greatest television series of all time.
       </Typography>
       <div className={styles.wrapper}>
         <img
