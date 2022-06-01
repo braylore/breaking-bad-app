@@ -14,7 +14,9 @@ const AboutPage = () => {
           mt: '30px'
         }}
       >
-        This portal is dedicated to one of the greatest television series of all time.
+        This port<span className={styles.textWrapper}>Al</span> is dedicated to one of{' '}
+        <span className={styles.textWrapper}>Th</span>e greatest television series of all{' '}
+        <span className={styles.textWrapper}>Ti</span>me.
       </Typography>
       <div className={styles.wrapper}>
         <img
