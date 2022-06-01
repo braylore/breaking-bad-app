@@ -4,6 +4,8 @@ import CharactersPage from '../../pages/CharactersPage/CharactersPage';
 import EpisodesPage from '../../pages/EpisodesPage/EpisodesPage';
 import GalleryPage from '../../pages/GalleryPage/GalleryPage';
 import SingleCharacterPage from '../../pages/SingleCharacterPage/SingleCharacterPage';
+import SingleEpisodePage from '../../pages/SingleEpisodePage/SingleEpisodePage';
+import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 import Layout from '../Layout/Layout';
 
 const App = () => {
@@ -30,8 +32,16 @@ const App = () => {
           element={<EpisodesPage />}
         />
         <Route
+          path="Episodes/:series/:season/:episode/:episodeId"
+          element={<SingleEpisodePage />}
+        />
+        <Route
           path="Gallery"
           element={<GalleryPage />}
+        />
+        <Route
+          path="*"
+          element={<NotFoundPage />}
         />
       </Route>
     </Routes>
@@ -39,4 +49,3 @@ const App = () => {
 };
 
 export default App;
-
