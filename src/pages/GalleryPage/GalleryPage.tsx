@@ -4,7 +4,7 @@ import { TransitionGroup } from 'react-transition-group';
 import { fetchPosters } from '../../store/actions/actions';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import ImgWrapper from '../../components/ImgWrapper/ImgWrapper';
-import { getSlicedPosters } from '../../utils/getSlicedPosters';
+import { getSlicedEntities } from '../../utils/getSlicedEntities';
 import { IPosterParams, IPosters } from '../../types/IPosters';
 import { useDidMountEffect } from '../../hooks/useDidMountEffect';
 import { useObserver } from '../../hooks/useObserver';
@@ -32,12 +32,12 @@ const App = () => {
   useEffect(() => {
     dispatch(fetchPosters()).then((r) => {
       const payload = r.payload as IPosters;
-      setSlicedPosters(getSlicedPosters(slice, payload.backdrops.concat(payload.posters)));
+      setSlicedPosters(getSlicedEntities(18, slice, payload.backdrops.concat(payload.posters)));
     });
   }, []);
 
   useEffect(() => {
-    setSlicedPosters([...slicedPosters, ...getSlicedPosters(slice, posters)]);
+    setSlicedPosters([...slicedPosters, ...getSlicedEntities(18, slice, posters)]);
   }, [slice]);
 
   return (
