@@ -5,12 +5,13 @@ import Loader from '../../components/UI/Loader/Loader';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { fetchCharacterByName } from '../../store/actions/actions';
 import { getFormattedCharInfo } from '../../utils/getFormattedCharInfo';
+import { specificCharacterOnUnmount } from '../../store/reducers/specificCharacterSlice';
 import mainStyles from '../../styles/main.module.scss';
 import Btn from '../../components/UI/Btn/Btn';
 
 const SingleCharacterPage = () => {
   const dispatch = useAppDispatch();
-  const { character, error, isLoading } = useAppSelector((state) => state.charactersReducer);
+  const { character, error, isLoading } = useAppSelector((state) => state.specificCharacterReducer);
   const { name } = useParams();
   const navigate = useNavigate();
 
@@ -22,6 +23,9 @@ const SingleCharacterPage = () => {
     if (name) {
       dispatch(fetchCharacterByName(name));
     }
+    return () => {
+      dispatch(specificCharacterOnUnmount());
+    };
   }, [name]);
 
   const charInfo = getFormattedCharInfo(character);
