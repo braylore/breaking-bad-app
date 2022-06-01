@@ -14,7 +14,7 @@ const CharactersList: FC<ICharactersListProps> = ({ charList }) => {
       sx={{
         alignItems: 'center',
         justifyContent: 'center',
-        mt: '30px'
+        mt: '5px'
       }}
       spacing={1}
       container
