@@ -1,27 +1,22 @@
-import { FC, MouseEvent, useState } from 'react';
+import { FC, MouseEvent } from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import { PayloadCharactersListFilter } from '../../../types/PayloadCharactersList';
 
 interface IToggleBtnsProps {
-  handleClick: (value: string) => void;
+  filter: PayloadCharactersListFilter;
+  handleChange: (event: MouseEvent<HTMLElement>, newFilter: PayloadCharactersListFilter) => void;
   isDisabled: boolean;
 }
 
-const ToggleBtns: FC<IToggleBtnsProps> = ({ handleClick, isDisabled }) => {
-  const [category, setCategory] = useState('');
-
-  const handleChange = (event: MouseEvent<HTMLElement>, newCategory: string) => {
-    setCategory(newCategory);
-    handleClick(newCategory);
-  };
-
+const ToggleBtns: FC<IToggleBtnsProps> = ({ handleChange, isDisabled, filter }) => {
   return (
     <ToggleButtonGroup
       disabled={isDisabled}
       sx={{
         mt: '20px'
       }}
-      value={category}
+      value={filter}
       exclusive
       onChange={handleChange}
     >
