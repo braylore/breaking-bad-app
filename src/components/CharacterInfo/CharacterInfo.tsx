@@ -9,6 +9,7 @@ import Loader from '../UI/Loader/Loader';
 import styles from './charInfo.module.scss';
 import mainStyles from '../../styles/main.module.scss';
 import { IQuote } from '../../types/IQuote';
+import { quoteOnUnmount } from '../../store/reducers/quoteSlice';
 
 interface ICharacterInfoProps {
   charInfo: IGetFormattedCharInfo;
@@ -32,6 +33,9 @@ const CharacterInfo: FC<ICharacterInfoProps> = ({ charInfo }) => {
 
   useEffect(() => {
     dispatch(fetchRandomQuote(name));
+    return () => {
+      dispatch(quoteOnUnmount());
+    };
   }, [name]);
 
   const handleClick = () => {
