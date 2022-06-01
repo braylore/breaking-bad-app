@@ -1,0 +1,7 @@
+.textWrapper {
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+    color: #f5c524;
+  }
+}
