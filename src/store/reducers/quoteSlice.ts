@@ -17,7 +17,11 @@ const initialState: IQuoteState = {
 export const quoteSlice = createSlice({
   name: 'quote',
   initialState,
-  reducers: {},
+  reducers: {
+    quoteOnUnmount: (state) => {
+      state.quote = [];
+    }
+  },
   extraReducers: {
     [fetchRandomQuote.fulfilled.type]: (state, action: PayloadAction<IQuote[]>) => {
       state.isLoading = false;
@@ -25,6 +29,7 @@ export const quoteSlice = createSlice({
     },
     [fetchRandomQuote.pending.type]: (state) => {
       state.isLoading = true;
+      state.error = '';
     },
     [fetchRandomQuote.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isLoading = false;
@@ -34,3 +39,4 @@ export const quoteSlice = createSlice({
 });
 
 export default quoteSlice.reducer;
+export const { quoteOnUnmount } = quoteSlice.actions;

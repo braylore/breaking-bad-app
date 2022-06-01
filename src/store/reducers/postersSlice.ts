@@ -26,6 +26,7 @@ export const postersSlice = createSlice({
     },
     [fetchPosters.pending.type]: (state) => {
       state.isLoading = true;
+      state.error = '';
     },
     [fetchPosters.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isLoading = false;
