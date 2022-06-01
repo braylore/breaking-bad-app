@@ -87,6 +87,7 @@ export const theme = createTheme({
           color: '#f5c524'
         },
         root: {
+          fontWeight: '500',
           '&::before': {
             borderColor: '#f5c524'
           },
@@ -107,11 +108,59 @@ export const theme = createTheme({
           }
         }
       }
+    },
+    MuiAccordion: {
+      styleOverrides: {
+        rounded: {
+          boxShadow: 'none',
+          backgroundColor: 'transparent'
+        }
+      }
+    },
+    MuiAccordionSummary: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#2e5632',
+          '&.Mui-focusVisible': {
+            backgroundColor: '#35663a'
+          }
+        }
+      }
+    },
+    MuiRating: {
+      styleOverrides: {
+        iconEmpty: {
+          color: '#ffffff4d'
+        }
+      }
+    },
+    MuiPaginationItem: {
+      styleOverrides: {
+        root: {
+          fontWeight: '500',
+          borderColor: '#767877',
+          color: '#fff',
+          '&:hover': {
+            borderColor: '#f5c524'
+          },
+          '&:focus': {
+            borderColor: '#f5c524'
+          },
+          '&.Mui-selected': {
+            backgroundColor: '#2e5632',
+            borderColor: '#f5c524',
+            color: '#f5c524',
+            '&:hover': {
+              backgroundColor: '#37683c'
+            }
+          }
+        }
+      }
     }
   },
   palette: {
     background: {
-      paper: '#243e27'
+      paper: '#2e5632'
     }
   }
 });
