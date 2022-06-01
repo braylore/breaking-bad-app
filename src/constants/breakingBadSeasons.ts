@@ -1,0 +1,1 @@
+export const breakingBadSeasonsArr = ['1', '2', '3', '4', '5'];
