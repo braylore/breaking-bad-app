@@ -34,7 +34,7 @@ const SingleEpisodePage = () => {
     return () => {
       dispatch(episodesOnUnmount());
     };
-  }, []);
+  }, [series, season, episode, episodeId]);
 
   if (isLoading) {
     return <Loader />;
